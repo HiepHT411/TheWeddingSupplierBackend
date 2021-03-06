@@ -10,4 +10,5 @@ public class TwsBackendApplication {
 		SpringApplication.run(TwsBackendApplication.class, args);
 	}
 	
+	//JWT Auth: https://www.powerupcloud.com/securing-spring-boot-and-react-js-with-spring-security-using-jwt-authentication/
 }
