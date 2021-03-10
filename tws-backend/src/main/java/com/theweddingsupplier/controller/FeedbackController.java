@@ -30,7 +30,7 @@ public class FeedbackController {
 		log.info("Get all feedbacks received from user");
 		return fbService.getAllFeedbacks();
 	}
-	@PostMapping(path = "/feedback")
+	@PostMapping(path = "/feedback")											//ok
 	public ResponseEntity<Feedback> saveFeedback(@RequestBody Feedback fb){
 		log.info("Save user's feedback to database: {}", fb.getEmail());
 		return ResponseEntity.ok(fbService.saveFeedback(fb));
