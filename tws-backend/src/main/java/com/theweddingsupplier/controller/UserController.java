@@ -53,18 +53,18 @@ public class UserController {
 	
 	@GetMapping("/all")
 	public String allAccess() {
-		return "Public Content.";
+		return "publicContent";
 	}
 	
 	@GetMapping("/user")
-	@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	public String userAccess() {
-		return "User Content.";
+		return "confirmedUserRole";
 	}
 
 	@GetMapping("/admin")
 	@PreAuthorize("hasRole('ADMIN')")
 	public String adminAccess() {
-		return "Admin Board.";
+		return "confirmedAdminRole";
 	}
 }
