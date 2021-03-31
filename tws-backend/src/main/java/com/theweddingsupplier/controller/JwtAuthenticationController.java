@@ -114,7 +114,9 @@ public class JwtAuthenticationController {
 					Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(adminRole);
-
+					Role adminRole2 = roleRepository.findByName(ERole.ROLE_USER)
+							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+					roles.add(adminRole2);
 					break;
 				default:
 					Role userRole = roleRepository.findByName(ERole.ROLE_USER)

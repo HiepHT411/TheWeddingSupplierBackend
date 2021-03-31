@@ -3,6 +3,7 @@ package com.theweddingsupplier.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,7 @@ public class FeedbackController {
 	private final FeedbackService fbService;
 	
 	@GetMapping("/feedback")
+	@PreAuthorize("hasRole('ADMIN')")
 	public List<Feedback> getAllFeedbacks(){
 		log.info("Get all feedbacks received from user");
 		return fbService.getAllFeedbacks();
