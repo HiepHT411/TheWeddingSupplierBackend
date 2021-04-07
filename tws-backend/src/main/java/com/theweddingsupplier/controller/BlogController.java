@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,6 +46,7 @@ public class BlogController {
 	@PostMapping("/blog")
 	public ResponseEntity<Blog> createBlog(@RequestBody Blog blog){
 		log.info("Created a blog, author: "+ blog.getAuthor());
+		
 		return ResponseEntity.ok(blogService.saveBlog(blog));
 	}
 	
@@ -55,8 +57,14 @@ public class BlogController {
 		return blog;
 	}
 	
+	@PutMapping("/blog/{id}")
+	public ResponseEntity<Blog> updateBlog(@PathVariable int id, @RequestBody Blog updatedBlog){
+		log.info("update blog: "+ updatedBlog.getId());
+		return ResponseEntity.ok(blogService.updateBlog(updatedBlog, id));
+	}
+	
 	@DeleteMapping("/blog/{id}")
-    public ResponseEntity < Map < String, Boolean >> deleteEmployee(@PathVariable int id) {
+    public ResponseEntity < Map < String, Boolean >> deleteBlog(@PathVariable int id) {
 		Blog blog = blogService.getArticleDetail(id);
         
 		blogRepo.delete(blog);

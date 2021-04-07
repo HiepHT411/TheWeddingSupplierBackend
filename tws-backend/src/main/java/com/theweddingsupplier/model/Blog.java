@@ -37,7 +37,7 @@ public class Blog {
 	
 	@Column(name = "date")
 	@NotBlank(message = "date may not be blank")
-	private Date date;
+	private String date;
 	
 	@Column(name = "img_link")
 	private String imgLink;
