@@ -37,7 +37,7 @@ public class BlogService {
 		return articles;
 	}
 	public Blog saveBlog(Blog blog) {
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		Date date = Calendar.getInstance().getTime();
 		String blogDate = dateFormat.format(date);
 		
@@ -50,8 +50,12 @@ public class BlogService {
 		
 		oldOne.setAuthor(updateBlog.getAuthor());
 		oldOne.setContent(updateBlog.getContent());
-		oldOne.setImgLink(updateBlog.getImgLink());
 		oldOne.setTitle(updateBlog.getTitle());
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		Date date = Calendar.getInstance().getTime();
+		String blogDate = dateFormat.format(date);
+		oldOne.setDate(blogDate);
 		
 		return blogRepo.save(oldOne);
 	}
